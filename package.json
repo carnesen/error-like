@@ -14,13 +14,16 @@
 		"build": "rm -rf lib && tsc",
 		"lint": "eslint --ext .ts src",
 		"lint-fix": "npm run lint -- --fix",
-		"release": "./scripts/release.sh",
+		"release": "carnesen-dev release --semverBump",
+		"release:minor": "npm run release -- minor",
+		"release:preminor": "npm run release -- preminor",
 		"start": "echo 'This package is a library, not an application' && exit 1",
 		"test": "npm run lint && npm run build && npm run unit-test",
 		"unit-test": "NODE_ENV=test jest src"
 	},
 	"devDependencies": {
-		"@carnesen/coded-error": "^0.4.0",
+		"@carnesen/coded-error": "0.4.0",
+		"@carnesen/dev": "0.1.0",
 		"@carnesen/tsconfig": "0.4.0",
 		"@types/jest": "26.0.23",
 		"@types/node": "16.0.0",
