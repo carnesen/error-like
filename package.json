@@ -1,6 +1,6 @@
 {
 	"name": "@carnesen/error-like",
-	"version": "0.0.0-0",
+	"version": "0.0.0",
 	"description": "Handle exceptions type-safely",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
@@ -15,8 +15,8 @@
 		"lint": "eslint --ext .ts src",
 		"lint-fix": "npm run lint -- --fix",
 		"release": "carnesen-dev release --semverBump",
+		"release:patch": "npm run release -- patch",
 		"release:minor": "npm run release -- minor",
-		"release:preminor": "npm run release -- preminor",
 		"start": "echo 'This package is a library, not an application' && exit 1",
 		"test": "npm run lint && npm run build && npm run unit-test",
 		"unit-test": "NODE_ENV=test jest src"

@@ -2,6 +2,8 @@
 
 ## Upcoming
 
+## carnesen-error-like-0.0.0 (2022-02-25)
+
 - Add type `ErrorLike`
 
 - Add function `errorLikeFactory` for converting an `unknown` exception into an ErrorLike object literal
