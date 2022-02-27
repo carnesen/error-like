@@ -1,6 +1,6 @@
 import { stringifyErrorLike } from './stringify-error-like';
-import { errorLikeFactory } from './error-like.factory';
+import { errorLikeFromException } from './error-like-from-exception';
 
 export function stringifyException(exception: unknown): string {
-	return stringifyErrorLike(errorLikeFactory(exception));
+	return stringifyErrorLike(errorLikeFromException(exception));
 }

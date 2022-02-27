@@ -1,5 +1,5 @@
 import { CodedError } from '@carnesen/coded-error';
-import { errorLikeFactory } from '..';
+import { errorLikeFromException } from '..';
 
 type Datum = {
 	description: string;
@@ -49,10 +49,10 @@ const data: Datum[] = [
 	},
 ];
 
-describe(errorLikeFactory.name, () => {
+describe(errorLikeFromException.name, () => {
 	for (const { description, exception, expectedResult } of data) {
 		it(description, () => {
-			const result = errorLikeFactory(exception);
+			const result = errorLikeFromException(exception);
 			expect(result.message).toMatch(expectedResult.message);
 			if (expectedResult.stack) {
 				expect(result.stack).toBe(expectedResult.stack);

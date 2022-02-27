@@ -1,4 +1,4 @@
-import { ErrorLike } from './error-like.type';
+import { ErrorLike } from './error-like';
 
 export function stringifyErrorLike(errorLike: ErrorLike): string {
 	const parts = [`message=${errorLike.message}`];
