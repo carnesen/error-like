@@ -1,7 +1,7 @@
-import { ErrorLike } from './error-like.type';
+import { ErrorLike } from './error-like';
 
 /** Convert an unknown exception into an ErrorLike object literal */
-export function errorLikeFactory(exception: unknown): ErrorLike {
+export function errorLikeFromException(exception: unknown): ErrorLike {
 	switch (typeof exception) {
 		case 'string':
 		case 'bigint':

@@ -13,16 +13,18 @@ npm install --save @carnesen/error-like
 This package includes runtime JavaScript files (ES2015) and the corresponding TypeScript type declarations.
 
 ```typescript
-import { errorLikeFactory } from '@carnesen/error-like';
+import { errorLikeFromException } from '@carnesen/error-like';
 
 try {
    fs.writeFileSync("foo.dat", "foo-bar-baz");
 } catch (exception) {
-   const errorLike = errorLikeFactory(exception);
-   if (errorLike.code !== "ENOENT") {
+   const errorLike = errorLikeFromException(exception);
+   if (errorLike.code === "ENOENT") {
+      // No such file or directory. This is expected if the file doesn't exist.
+   } else {
       throw exception;
    }
-   // Exception has code "ENOENT" meaning "no such file or directory", as expected when the file hasn't yet been created by the user, which is ok.
+
 }
 ```
 
