@@ -2,6 +2,8 @@
 
 ## Upcoming
 
+## carnesen-error-like-0.1.0 (2022-02-27)
+
 - Breaking: Rename `errorLikeFactory` to `errorLikeFromException` for better parity with `stringifyException`. Also some people don't like "factory". It's to Java-esque. "FromX" is more typical in JavaScript/TypeScript APIs.
 
 ## carnesen-error-like-0.0.0 (2022-02-25)
