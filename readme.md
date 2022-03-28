@@ -10,7 +10,7 @@ To install this package as a dependency in your project, in a shell do:
 npm install --save @carnesen/error-like
 ```
 
-This package includes runtime JavaScript files (ES2015) and the corresponding TypeScript type declarations.
+This package includes runtime JavaScript files and the corresponding TypeScript type declarations.
 
 ```typescript
 import { errorLikeFromException } from '@carnesen/error-like';
