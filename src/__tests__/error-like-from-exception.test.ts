@@ -37,7 +37,7 @@ const data: Datum[] = [
 		description: 'null',
 		exception: null,
 		expectedResult: {
-			message: 'non-truthy',
+			message: 'literally',
 		},
 	},
 	{
@@ -45,6 +45,13 @@ const data: Datum[] = [
 		exception: 1n,
 		expectedResult: {
 			message: 'bigint',
+		},
+	},
+	{
+		description: 'function',
+		exception: () => {},
+		expectedResult: {
+			message: 'function',
 		},
 	},
 ];
