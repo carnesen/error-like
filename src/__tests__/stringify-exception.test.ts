@@ -16,14 +16,14 @@ const data: Datum[] = [
 	{
 		description: 'Ordinary error',
 		exception: ordinaryError,
-		expectedMatches: [`message=${ordinaryError.message}`],
+		expectedMatches: [`Error: ${ordinaryError.message}`],
 		expectedNonMatches: ['code='],
 	},
 	{
 		description: 'Coded error',
 		exception: codedError,
 		expectedMatches: [
-			`message=${codedError.message}`,
+			`Error: ${codedError.message}`,
 			`code=${codedError.code}`,
 		],
 		expectedNonMatches: [],

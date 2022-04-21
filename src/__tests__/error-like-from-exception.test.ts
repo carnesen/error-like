@@ -1,10 +1,12 @@
 import { CodedError } from '@carnesen/coded-error';
 import { errorLikeFromException } from '..';
+import { ErrorLikeName } from '../error-like-name';
 
 type Datum = {
 	description: string;
 	exception: unknown;
 	expectedResult: {
+		name?: string;
 		message: string;
 		stack?: string;
 		code?: string;
@@ -34,10 +36,19 @@ const data: Datum[] = [
 		},
 	},
 	{
+		description: 'empty object',
+		exception: {},
+		expectedResult: {
+			message: '',
+			name: ErrorLikeName.NonErrorObjectException,
+		},
+	},
+	{
 		description: 'null',
 		exception: null,
 		expectedResult: {
 			message: 'literally',
+			name: ErrorLikeName.NullException,
 		},
 	},
 	{
@@ -45,6 +56,48 @@ const data: Datum[] = [
 		exception: 1n,
 		expectedResult: {
 			message: 'bigint',
+			name: ErrorLikeName.BigintException,
+		},
+	},
+	{
+		description: 'string',
+		exception: 'foo',
+		expectedResult: {
+			message: 'string',
+			name: ErrorLikeName.StringException,
+		},
+	},
+	{
+		description: 'boolean',
+		exception: true,
+		expectedResult: {
+			message: 'boolean',
+			name: ErrorLikeName.BooleanException,
+		},
+	},
+	{
+		description: 'number',
+		exception: 123,
+		expectedResult: {
+			message: 'number',
+			name: ErrorLikeName.NumberException,
+		},
+	},
+	{
+		description: 'undefined',
+		exception: undefined,
+		expectedResult: {
+			message: 'undefined',
+			name: ErrorLikeName.UndefinedException,
+		},
+	},
+
+	{
+		description: 'symbol',
+		exception: Symbol('foo'),
+		expectedResult: {
+			message: 'symbol',
+			name: ErrorLikeName.SymbolException,
 		},
 	},
 	{
@@ -52,6 +105,7 @@ const data: Datum[] = [
 		exception: () => {},
 		expectedResult: {
 			message: 'function',
+			name: ErrorLikeName.FunctionException,
 		},
 	},
 ];
@@ -61,11 +115,16 @@ describe(errorLikeFromException.name, () => {
 		it(description, () => {
 			const result = errorLikeFromException(exception);
 			expect(result.message).toMatch(expectedResult.message);
+			expect(result.stack).toBeTruthy();
 			if (expectedResult.stack) {
 				expect(result.stack).toBe(expectedResult.stack);
 			}
 			if (expectedResult.code) {
 				expect(result.code).toBe(expectedResult.code);
+			}
+			expect(result.name).toBeTruthy();
+			if (expectedResult.name) {
+				expect(result.name).toBe(expectedResult.name);
 			}
 		});
 	}
