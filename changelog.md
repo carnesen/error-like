@@ -2,6 +2,8 @@
 
 ## Upcoming
 
+## carnesen-error-like-0.2.0 (2022-04-21)
+
 - Breaking: Make `ErrorLike`'s `stack` optional to align this type with the built-in `Error` interface
 
 - Feature: Support "name" property in `ErrorLike` interface by making it a simple extension of the built-in `Error` interface.
